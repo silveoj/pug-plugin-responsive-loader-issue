@@ -1,5 +1,6 @@
 const path = require('path');
-const PugPlugin = require('pug-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, argv) => {
   const dirname = path.resolve(__dirname, 'src');
@@ -9,51 +10,41 @@ module.exports = (env, argv) => {
     context: dirname,
     mode: isProd,
     entry: {
-      index: `./views/index.pug`,
+      main: './js/main.js',
     },
     output: {
       filename: '[name].[contenthash:8].js',
-      clean: true,
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
     },
     resolve: {
-      // extensions: ['.js', '.json', 'scss'],
+      extensions: ['.js', '.json'],
       alias: {
         Images: '/assets/img',
-        Styles: '/styles',
-        Scripts: '/js',
       },
     },
     devServer: {
       port: 2437,
     },
     plugins: [
-      // new CleanWebpackPlugin(),
-      new PugPlugin({
-        modules: [
-          PugPlugin.extractCss({
-            filename: '[name].[contenthash:8].css',
-          }),
-        ],
+      new HtmlWebpackPlugin({
+        title: 'responsive-loader',
+        filename: 'index.html',
+        template: './views/index.html',
       }),
+      new MiniCssExtractPlugin(),
     ],
     module: {
       rules: [
-        // pug
-        {
-          test: /\.(pug)$/,
-          loader: PugPlugin.loader, // <-- ultra important
-          options: {
-            method: 'render', // fastest method to generate static HTML files
-          },
-        },
+        // {
+        //   test: /\.html$/i,
+        //   loader: "html-loader",
+        // },
 
         // styles
         {
           test: /\.(css|sass|scss)$/,
           include: [path.join(dirname, "styles")],
-          use: ['css-loader', 'sass-loader'],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         },
 
         // images
@@ -65,7 +56,9 @@ module.exports = (env, argv) => {
           use: {
             loader: 'responsive-loader',
             options: {
-              name: 'assets/img/[name].[hash:8]-[width]w.[ext]',
+              // adapter: require('responsive-loader/sharp'),
+              outputPath: 'assets/img',
+              name: '[name].[hash:8]-[width]w.[ext]',
             },
           },
         },

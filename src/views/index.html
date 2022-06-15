@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <header>header</header>
+
+    <h2>img tag - copy from doc</h2>
+
+    <picture>
+      <source srcSet={responsiveImageWebp.srcSet} type='image/webp' sizes='(min-width: 1024px) 1024px, 100vw'/>
+      <img
+        src={responsiveImage.src}
+        srcSet={responsiveImage.srcSet}
+        width={responsiveImage.width}
+        height={responsiveImage.height}
+        sizes='(min-width: 1024px) 1024px, 100vw'
+        loading="lazy"
+      />
+    </picture>
+  </body>
+</html>
