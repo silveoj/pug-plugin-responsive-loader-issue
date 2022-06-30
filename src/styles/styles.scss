@@ -1,9 +1,12 @@
+@use 'variables/colors';
+@import 'mixins/breakpoints';
+@import 'mixins/background';
 
-header {
-    height: 200px;
-    background-color: gray;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-image: url('~Images/image.png?size=200&format=webp');
-}
+@import 'st-1';
+@import 'st-2';
+@import 'st-3';
+@import 'fonts';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'components/index';
+@import 'pages/index';

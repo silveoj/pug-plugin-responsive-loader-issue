@@ -1,0 +1,114 @@
+@use 'variables/colors';
+@use 'mixins/breakpoints';
+
+.fgf {
+  $nav-selector: &;
+  $nav-item-x: 1rem;
+
+  &__gfgfgf-ghghg {
+    user-select: none;
+    cursor: pointer;
+    display: block;
+    width: 1.5rem;
+
+    @include mixin-ngtrepomnt-rrr() {
+      display: none;
+    }
+  }
+
+  &__gfgfgf-gfg {
+    width: 100%;
+    height: 0.125rem;
+    margin: 0.25rem 0;
+    background-color: colors.$white;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  &__gtrrjl-65656hjh {
+    display: none;
+
+    &:checked {
+      @include mixin-ngtrepomnt-rrr() {
+        & ~ #{$nav-selector}__list {
+          display: none;
+        }
+      }
+    }
+
+    &:not(:checked) {
+      $selector-toggle-item: #{$nav-selector}__toggle-bar;
+
+      & ~ #{$nav-selector}__toggle-label {
+        #{$selector-toggle-item}-1 {
+          transform: rotate(45deg) translate(5px, 4px);
+        }
+
+        #{$selector-toggle-item}-2 {
+          background-color: transparent;
+        }
+
+        #{$selector-toggle-item}-3 {
+          transform: rotate(-45deg) translate(4px, -4px);
+        }
+      }
+    }
+  }
+
+  &__fdgd {
+    @include mixin-ngtrepomnt-rrr() {
+      position: absolute;
+      background-color: colors.$color-brand-yhyhy;
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    @include mixin-ngtrepomnt-rrr() {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: baseline;
+      margin: 0 -1 * $nav-item-x;
+    }
+  }
+
+  &__hghg {
+    list-style: none;
+    margin: 0.5rem 0;
+
+    @include mixin-ngtrepomnt-rrr() {
+      margin: 0 $nav-item-x;
+    }
+
+    &_uyuy-r {
+      @include mixin-ngtrepomnt-rrr() {
+        margin-left: 33rem;
+      }
+    }
+  }
+
+  &__hghg {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    color: colors.$white;
+    font-size: 1.3125rem;
+
+    line-height: 1.5rem;
+    letter-spacing: -0.025em;
+
+    &_color-545 {
+      color: colors.$color-frewaghtun;
+    }
+
+    &_size-gh {
+      font-size: 0.875rem;
+      letter-spacing: -0.025em;
+    }
+  }
+}

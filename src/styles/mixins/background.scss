@@ -1,0 +1,11 @@
+@mixin background($path) {
+  background-position: center;
+
+  .class-1 & {
+    background-image: url(#{$path}?format=webp); // TODO: delete it for example
+  }
+
+  .class-2 & {
+    background-image: url(#{$path}?format=jpg);
+  }
+}

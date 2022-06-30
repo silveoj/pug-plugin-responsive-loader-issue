@@ -1,8 +1,13 @@
-## System requirements
-- NodeJS 14.17.0
+Mash of styles
 
-## Issues
-- Header contains bg image - doesn't work
-- Body contains img tag - doesn't work
+I get error on Win and Linux:
+`Can't resolve the file ../src/assets/img/image.png in ..\src\html\pages\view-2.pug`
 
-`dist` folder - see `result.png` file
+here: 
+```pug
+header
+  img(src=require('~Images/image.png'))
+```
+
+- Also it works SOMETIMES if I remove `.browserlistrc`
+- I can replace `padding-bottom` to `padding-top` and it will work.

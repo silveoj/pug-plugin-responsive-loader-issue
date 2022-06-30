@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'dd';
+  src: url('~Fonts/dd.ttf');
+  src: url('~Fonts/dd.ttf?')
+      format('embedded-opentype'),
+    url('~Fonts/dd.ttf') format('woff2'),
+    url('~Fonts/dd.ttf')
+      format('woff'),
+    url('~Fonts/dd.ttf')
+      format('truetype'),
+      url('~Fonts/dd.ttf#svgFontName') format('svg');
+}

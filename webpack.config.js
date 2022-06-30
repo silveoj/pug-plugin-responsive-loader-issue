@@ -1,75 +1,117 @@
 const path = require('path');
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const PugPlugin = require('pug-plugin');
 
-module.exports = (env, argv) => {
-  const dirname = path.resolve(__dirname, 'src');
-  const isProd = argv.mode === 'production';
+// ******************
+
+const startDir = path.resolve(__dirname, 'src');
+
+module.exports = (argv) => {
+  const isProduction = argv.mode === 'production';
 
   return {
-    context: dirname,
-    mode: isProd,
+    context: startDir,
+    mode: isProduction,
     entry: {
-      index: `./views/index.pug`,
+      index: './html/pages/index.pug',
+      view2: './html/pages/view-2.pug', // ./html/pages/view-2/index.pug doesn't wotks too
     },
     output: {
-      filename: '[name].[contenthash:8].js',
-      clean: true,
+      filename: `[name].[contenthash:8].js`,
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
     },
     resolve: {
-      // extensions: ['.js', '.json', 'scss'],
+      extensions: ['.js', '.json', 'scss'],
       alias: {
-        Images: '/assets/img',
-        Styles: '/styles',
-        Scripts: '/js',
+        '@': startDir,
+        Fonts: path.join(startDir, '/assets/fonts'),
+        Images: path.join(startDir, '/assets/img'),
+        Styles: path.join(startDir, '/styles'),
       },
     },
+    optimization: getOptimization(isProduction),
     devServer: {
-      port: 2437,
+      port: 4545,
+      hot: !isProduction,
     },
     plugins: [
-      // new CleanWebpackPlugin(),
+      new CleanWebpackPlugin(),
       new PugPlugin({
         modules: [
           PugPlugin.extractCss({
-            filename: '[name].[contenthash:8].css',
+            filename: `[name].[contenthash:8].css`,
           }),
         ],
       }),
     ],
     module: {
       rules: [
-        // pug
         {
-          test: /\.(pug)$/,
-          loader: PugPlugin.loader, // <-- ultra important
+          test: /\.pug$/,
+          loader: PugPlugin.loader, // '@webdiscus/pug-loader',
           options: {
-            method: 'render', // fastest method to generate static HTML files
+            method: 'render', // 'render' is fastest method to generate static HTML files
           },
         },
-
-        // styles
         {
-          test: /\.(css|sass|scss)$/,
-          include: [path.join(dirname, "styles")],
-          use: ['css-loader', 'sass-loader'],
+          test: /\.s[ac]ss$/,
+          include: [path.join(startDir, 'styles')],
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [['postcss-preset-env']],
+                },
+              },
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
         },
-
-        // images
         {
-          test: /\.(gif|png|jpe?g|ico|svg|webp)$/i,
+          test: /\.(jpe?g|png|webp)$/,
           type: 'asset/resource',
-          // include: /assets\/images/,
-          include: [path.join(dirname, "/assets/img")],
+          include: [path.join(startDir, '/assets/img')],
           use: {
             loader: 'responsive-loader',
             options: {
-              name: 'assets/img/[name].[hash:8]-[width]w.[ext]',
+              outputPath: 'assets/img',
+              name: '[name]-[width].[ext]',
             },
           },
         },
-      ]
-    }
+    
+        // Fonts
+        {
+          test: /\.(woff2?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+          type: 'asset/resource',
+          include: [path.join(startDir, 'assets/fonts')],
+          generator: {
+            filename: 'assets/fonts/[name][ext]',
+          },
+        },
+      ],
+    },
   };
+};
+
+
+const getOptimization = (isProd) => {
+  const config = {
+    splitChunks: {
+      chunks: 'all', // TODO: comment here to get success
+    },
+  };
+
+  return config;
 };

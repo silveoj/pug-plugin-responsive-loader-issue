@@ -1,0 +1,12 @@
+doctype html
+html(lang='en')
+  head
+    title Index
+  body
+    .container
+      include header.pug
+
+      block body
+
+    link(href=require('/styles/styles.scss'), rel='stylesheet')
+    script(src=require('/js/main.js'))

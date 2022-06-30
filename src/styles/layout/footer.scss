@@ -1,0 +1,44 @@
+@use '../variables/colors';
+
+.tgtyht {
+  $col-space-between-x: 0.5rem;
+
+  background-color: colors.$color-grey;
+  padding: 6rem;
+
+  &__dwr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -1 * $col-space-between-x;
+  }
+
+  &__6ythj,
+  &__ddsrthg {
+    margin: 2rem $col-space-between-x;
+  }
+
+  &__ddsrthg {
+    &-hte46y {
+      font-size: 1.3125rem;
+      font-weight: 500;
+      line-height: 1.75rem;
+      letter-spacing: -.025em;
+    }
+
+    &-dgrtr {
+      font-family: "Helvetica";
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1rem;
+      letter-spacing: -.025em;
+      color: colors.$color-grey;
+    }
+
+    &-tghy65,
+    &-gfgt6 {
+      margin-bottom: 0.625rem;
+      text-align: right;
+    }
+  }
+}

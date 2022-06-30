@@ -1,0 +1,114 @@
+@use '../mixins/breakpoints';
+
+.ghuksed-fgt-rfrf-sdg {
+  $fghytre-selector: &;
+  $bg-size: 77.25rem;
+  $bg-size-tab-content: 34rem;
+  $bg-size-sm: 100%;
+  $padding-x: 69rem;
+
+  display: flex;
+  flex-direction: column;
+
+  @include mixin-ngtrepomnt-rrr() {
+    flex-direction: row;
+  }
+
+  &_tabyy {
+    #{$fghytre-selector}__bg,
+    #{$fghytre-selector}__vd {
+      @include mixin-ngtrepomnt-rrr() {
+        flex: 0 0 $bg-size-tab-content;
+        max-width: $bg-size-tab-content;
+      }
+    }
+
+    #{$fghytre-selector}__bg {
+      @include mixin-ngtrepomnt-rrr() {
+        padding-top: $bg-size-tab-content;
+      }
+    }
+
+    #{$fghytre-selector}__txt {
+      $txt-size-tab-content: calc(100% - $bg-size-tab-content);
+
+      @include mixin-ngtrepomnt-rrr() {
+        flex: 0 0 $txt-size-tab-content;
+        max-width: $txt-size-tab-content;
+        padding-left: $padding-x;
+      }
+    }
+  }
+
+  &__ty,
+  &__hg {
+    flex: 0 0 $bg-size-sm;
+    max-width: $bg-size-sm;
+    order: 1;
+
+    @include mixin-ngtrepomnt-rrr() {
+      $border-radius: 0.5rem;
+
+      order: 0;
+      flex: 0 0 $bg-size;
+      max-width: $bg-size;
+      border-radius: .25rem;
+      overflow: hidden;
+
+      #{$fghytre-selector}_inverse & {
+        order: 2;
+        border-radius: $border-radius 0 0 $border-radius;
+      }
+    }
+  }
+
+  &__dd {
+    padding-top: $bg-size-sm;
+
+    @include mixin-ngtrepomnt-rrr() {
+      padding-top: $bg-size;
+    }
+  }
+
+  &__ff {
+    @include mixin-ngtrepomnt-rrr() {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  &__tyt {
+    order: 1;
+
+    @include mixin-ngtrepomnt-rrr() {
+      $txt-size: calc(100% - $bg-size);
+
+      order: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 0 0 $txt-size;
+      max-width: $txt-size;
+      padding-left: $padding-x;
+
+      &_hyhyhy-d {
+        justify-content: center;
+      }
+
+      #{$fghytre-selector}_inverse & {
+        order: 1;
+        padding-right: $padding-x;
+        padding-left: 0;
+      }
+    }
+  }
+
+  &__hjui,
+  &__redfg {
+    margin-bottom: 1rem;
+
+    @include mixin-ngtrepomnt-rrr() {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

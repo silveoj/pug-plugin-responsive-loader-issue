@@ -1,0 +1,22 @@
+@use 'mixins/breakpoints';
+
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.container-1 {
+  padding-left: 1rem;
+
+  @include mixin-ngtrepomnt-rrr() {
+    padding-left: 4rem;
+  }
+}
+
+.container-2 {
+  padding-right: 1rem;
+
+  @include mixin-ngtrepomnt-rrr() {
+    padding-right: 4rem;
+  }
+}

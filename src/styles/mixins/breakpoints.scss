@@ -1,0 +1,24 @@
+$grid: (
+  sm: 555px,
+  md: 777px,
+  lg: 999px,
+  xl: 1111px,
+  xxl: 1222px
+);
+
+@function calc-me($val) {
+  @return $val - 44.02px;
+}
+
+@mixin mixin-ngtrepomnt-rrr() {
+  @media (min-width: 1001px) {
+    @content;
+  }
+}
+
+.inside {
+  @each $key, $value in $grid {
+    --grid-breakpoint-min-#{$key}: #{$value};
+    --grid-breakpoint-max-#{$key}: #{calc-me($value)};
+  }
+}

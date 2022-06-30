@@ -1,0 +1,27 @@
+@use '../mixins/breakpoints';
+
+.yhtsfre-trtrg {
+  padding: 0;
+
+  @include mixin-ngtrepomnt-rrr() {
+    // padding: 4rem 8.25rem 8rem;
+  }
+
+  &__4444 {
+    margin-bottom: 1rem;
+  }
+
+  &__55555 {
+    margin-bottom: 33rem;
+    max-width: 33rem;
+  }
+
+  &__4444,
+  &__55555 {
+    padding: 33rem;
+
+    @include mixin-ngtrepomnt-rrr() {
+      padding: 22rem;
+    }
+  }
+}

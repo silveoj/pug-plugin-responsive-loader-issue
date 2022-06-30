@@ -1,0 +1,65 @@
+@use '../variables/colors';
+@use '../mixins/breakpoints';
+
+.yhtsfre-333-333-hghg {
+  $bg-size: 34rem;
+  $bg-size-sm: 100%;
+  $padding-x: 2rem;
+
+  @include mixin-ngtrepomnt-rrr() {
+    display: flex;
+  }
+
+  &__rt {
+    &-free {
+      @include background('~Images/image.png');
+    }
+
+    @include mixin-ngtrepomnt-rrr() {
+      display: none;
+    }
+
+    @include mixin-ngtrepomnt-rrr() {
+      flex: 0 0 $bg-size;
+      max-width: $bg-size;
+    }
+  }
+
+  &__trt {
+    @include mixin-ngtrepomnt-rrr() {
+      $jhj-size: calc(100% - $bg-size);
+
+      flex: 0 0 $jhj-size;
+      max-width: $jhj-size;
+      padding-left: $padding-x;
+    }
+  }
+
+  &__hhh {
+    margin-bottom: 1.5rem;
+  }
+
+  &__ghg {
+    margin-top: 5rem;
+  }
+
+  &__eeee-gggg {
+    font-size: 1.75rem;
+    line-height: 2rem;
+    letter-spacing: -0.025em;
+    color: colors.$color-brand;
+    margin-bottom: 1rem;
+  }
+
+  &__eeee-55555-1 {
+    margin-bottom: 1rem;
+  }
+
+  &__eeee-55555-1,
+  &__eeee-55555-2 {
+    font-size: 1.3125rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+}

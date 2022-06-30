@@ -1,0 +1,68 @@
+@use 'variables/colors';
+@use 'mixins/breakpoints';
+
+.rfrfrrf-1 {
+  margin: 4rem 0;
+  font-size: 3.5rem;
+  line-height: 3.75rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: colors.$white;
+
+  @include mixin-ngtrepomnt-rrr() {
+    font-size: 5.25rem;
+    line-height: 5.75rem;
+  }
+}
+
+.rfrfrrf-2 {
+  font-size: 3rem;
+  line-height: 3.5rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: colors.$white;
+
+  @include mixin-ngtrepomnt-rrr() {
+    font-size: 4rem;
+    line-height: 4.5rem;
+  }
+}
+
+.rfrfrrf-3 {
+  font-size: 2rem;
+  line-height: 2.25rem;
+  letter-spacing: -0.025em;
+  color: colors.$white;
+
+  @include mixin-ngtrepomnt-rrr() {
+    font-size: 3rem;
+    line-height: 3.25rem;
+  }
+}
+
+.rfrfrrf-4 {
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: colors.$white;
+
+  @include mixin-ngtrepomnt-rrr() {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.trtrt-1 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: colors.$color-grey;
+  @include mixin-ngtrepomnt-rrr() {
+    font-size: 1.3125rem;
+    line-height: 1.75rem;
+  }
+}

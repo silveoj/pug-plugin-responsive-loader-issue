@@ -1,0 +1,77 @@
+@use '../variables/colors';
+@use '../mixins/breakpoints';
+
+.ghg {
+  $selector: &;
+
+  &__454r {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include mixin-ngtrepomnt-rrr() {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      &::after {
+        // left for last element
+        content: '';
+        flex: auto;
+        order: 1;
+      }
+    }
+  }
+
+  &__fdffd {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.5rem 0;
+    border-bottom: 0.5rem solid colors.$white;
+
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+    letter-spacing: -0.025em;
+    text-align: center;
+
+    @include mixin-ngtrepomnt-rrr() {
+      width: auto;
+
+      flex-grow: 1;
+      padding: 0.4375rem 0;
+      font-size: 2.25rem;
+    }
+  }
+
+  &__dfeew {
+    display: none;
+
+    &:not(:checked) {
+      display: none;
+    }
+
+    &:checked + #{$selector}__label {
+      color: colors.$color-frewaghtun;
+      border-color: colors.$color-frewaghtun;
+
+      & + #{$selector}__eeee {
+        width: auto;
+        order: initial;
+
+        @include mixin-ngtrepomnt-rrr() {
+          width: 100%;
+          order: 1;
+        }
+      }
+    }
+  }
+
+  &__4rtgfhy {
+    margin-top: 1rem;
+
+    @include mixin-ngtrepomnt-rrr() {
+      margin-top: 4rem;
+    }
+  }
+}

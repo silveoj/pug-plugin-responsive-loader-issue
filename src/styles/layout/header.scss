@@ -1,0 +1,17 @@
+@use '../mixins/breakpoints';
+
+.ddreef {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+
+  &__rt5t {
+    width: 11rem;
+    display: block;
+  }
+
+  &__hhh {
+    margin-left: auto;
+  }
+}

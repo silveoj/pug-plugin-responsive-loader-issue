@@ -1,0 +1,51 @@
+.st-2 {
+  $col-space-between-x: 0.5rem;
+
+  &__rtrt {
+    display: flex;
+    margin: 0 -1 * $col-space-between-x;
+  }
+
+  &__yutr {
+    $width: calc(calc(100% / 3) - $col-space-between-x * 2);
+
+    flex: 0 0 $width;
+    max-width: $width;
+    margin: 2rem $col-space-between-x;
+  }
+
+  &__tyty {
+    &-htgr-1,
+    &-nhjg-2 {
+      font-size: 1.75rem;
+      line-height: 2rem;
+      letter-spacing: -0.025em;
+    }
+
+    &-frtu-1 {
+      margin-bottom: 0.5rem;
+    }
+
+    &-olik-2 {
+      margin-bottom: 0.25rem;
+    }
+
+    &-gfrol-1 {
+      font-weight: 500;
+      line-height: 1rem;
+      margin: 0 0 0.5rem;
+    }
+
+    &-rtiuj-2 {
+      line-height: 1.25rem;
+      margin: 0;
+    }
+
+    &-frgtg-1,
+    &-juyhg-2 {
+      list-style: none;
+      font-size: 1rem;
+      letter-spacing: -0.025em;
+    }
+  }
+}
