@@ -12,7 +12,8 @@ module.exports = (env, argv) => {
       index: `./views/index.pug`,
     },
     output: {
-      filename: '[name].[contenthash:8].js',
+      filename: 'assets/js/[name].[contenthash:8].js',
+      chunkFilename: 'assets/js/[id].[contenthash:8].js',
       clean: true,
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
@@ -25,15 +26,11 @@ module.exports = (env, argv) => {
         Scripts: '/js',
       },
     },
-    devServer: {
-      port: 2437,
-    },
     plugins: [
-      // new CleanWebpackPlugin(),
       new PugPlugin({
         modules: [
           PugPlugin.extractCss({
-            filename: '[name].[contenthash:8].css',
+            filename: 'assets/css/[name].[contenthash:8].css',
           }),
         ],
       }),
@@ -43,7 +40,7 @@ module.exports = (env, argv) => {
         // pug
         {
           test: /\.(pug)$/,
-          loader: PugPlugin.loader, // <-- ultra important
+          loader: PugPlugin.loader,
           options: {
             method: 'render', // fastest method to generate static HTML files
           },
@@ -60,7 +57,6 @@ module.exports = (env, argv) => {
         {
           test: /\.(gif|png|jpe?g|ico|svg|webp)$/i,
           type: 'asset/resource',
-          // include: /assets\/images/,
           include: [path.join(dirname, "/assets/img")],
           use: {
             loader: 'responsive-loader',
@@ -68,8 +64,29 @@ module.exports = (env, argv) => {
               name: 'assets/img/[name].[hash:8]-[width]w.[ext]',
             },
           },
+          // generator: {
+          //   filename: 'assets/img/[name].[hash:8][ext]',
+          // },
         },
       ]
-    }
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
+    },
+    devServer: {
+      static: {
+        directory: path.join(__dirname, 'dist'),
+      },
+      compress: true,
+      watchFiles: {
+        paths: ['src/**/*.*'],
+        options: {
+          usePolling: true,
+        },
+      },
+      //open: true, // open in browser
+    },
   };
 };
