@@ -53,7 +53,7 @@ module.exports = (argv) => {
           usePolling: true,
         },
       },
-      //open: true, // open in browser
+      open: true, // open in browser
     },
     plugins: [
       new PugPlugin({
