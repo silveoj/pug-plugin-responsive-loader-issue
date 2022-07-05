@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "npx webpack --mode development",
-    "build:prod": "npx webpack --mode production",
-    "start:dev": "npx webpack-dev-server --mode development --open"
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "start": "webpack serve --mode development"
   },
   "author": "",
   "license": "ISC",
@@ -19,8 +19,7 @@
     "postcss": "^8.4.14",
     "postcss-loader": "^7.0.0",
     "postcss-preset-env": "^7.7.2",
-    "pug": "^3.0.2",
-    "pug-plugin": "^2.8.0",
+    "pug-plugin": "^2.9.3",
     "responsive-loader": "^3.0.4",
     "sass": "^1.53.0",
     "sass-loader": "^13.0.2",

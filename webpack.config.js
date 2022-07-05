@@ -1,9 +1,5 @@
 const path = require('path');
-
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const PugPlugin = require('pug-plugin');
-
-// ******************
 
 const startDir = path.resolve(__dirname, 'src');
 
@@ -13,14 +9,17 @@ module.exports = (argv) => {
   return {
     context: startDir,
     mode: isProduction,
+    devtool: 'source-map',
     entry: {
       index: './html/pages/index.pug',
-      view2: './html/pages/view-2.pug', // ./html/pages/view-2/index.pug doesn't wotks too
+      view2: './html/pages/view-2.pug', // ./html/pages/view-2/index.pug doesn't works too
     },
     output: {
-      filename: `[name].[contenthash:8].js`,
+      filename: `assets/js/[name].[contenthash:8].js`,
+      chunkFilename: 'assets/js/[id].[contenthash:8].js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
+      clean: true,
     },
     resolve: {
       extensions: ['.js', '.json', 'scss'],
@@ -31,17 +30,36 @@ module.exports = (argv) => {
         Styles: path.join(startDir, '/styles'),
       },
     },
-    optimization: getOptimization(isProduction),
+    optimization: {
+      splitChunks: {
+        //chunks: 'all', // DON'T use default spliting, it's break compilation process in pug-plugin (Webpack BUG!!!)
+        cacheGroups: {
+          scripts: {
+            test: /\.(js|ts)$/, // here must be specified all extensions of scripts which should be splitted
+            chunks: 'all',
+            enforce: true, // only as example to force split all js files, remove in your code
+          },
+        },
+      },
+    },
     devServer: {
-      port: 4545,
-      hot: !isProduction,
+      static: {
+        directory: path.join(__dirname, 'dist'),
+      },
+      compress: true,
+      watchFiles: {
+        paths: ['src/**/*.*'],
+        options: {
+          usePolling: true,
+        },
+      },
+      //open: true, // open in browser
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new PugPlugin({
         modules: [
           PugPlugin.extractCss({
-            filename: `[name].[contenthash:8].css`,
+            filename: `assets/css/[name].[contenthash:8].css`,
           }),
         ],
       }),
@@ -50,20 +68,16 @@ module.exports = (argv) => {
       rules: [
         {
           test: /\.pug$/,
-          loader: PugPlugin.loader, // '@webdiscus/pug-loader',
+          loader: PugPlugin.loader,
           options: {
             method: 'render', // 'render' is fastest method to generate static HTML files
           },
         },
         {
           test: /\.s[ac]ss$/,
-          include: [path.join(startDir, 'styles')],
           use: [
             {
               loader: 'css-loader',
-              options: {
-                importLoaders: 1,
-              },
             },
             {
               loader: 'postcss-loader',
@@ -80,7 +94,7 @@ module.exports = (argv) => {
         },
         {
           test: /\.(jpe?g|png|webp)$/,
-          type: 'asset/resource',
+          type: 'asset/resource', // <-- MUST BE defined
           include: [path.join(startDir, '/assets/img')],
           use: {
             loader: 'responsive-loader',
@@ -103,15 +117,4 @@ module.exports = (argv) => {
       ],
     },
   };
-};
-
-
-const getOptimization = (isProd) => {
-  const config = {
-    splitChunks: {
-      chunks: 'all', // TODO: comment here to get success
-    },
-  };
-
-  return config;
 };
