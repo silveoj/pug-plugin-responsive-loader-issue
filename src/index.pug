@@ -1,0 +1,28 @@
+include mixin-my-picture.pug
+
+doctype html5
+html
+  head
+    link(rel="stylesheet", href='/styles.css')
+
+  body 
+
+    h2 picture + img - mixin
+    h3 works
+    +my-picture
+
+    hr
+
+    h2 picture + img - not mixin
+    h3 works
+    picture
+      source(
+        srcset=`/assets/img/image.png`
+        type='image/png'
+      )
+      img(
+        src=`/assets/img/image.jpeg`
+        alt=''
+      )
+
+    script(src='/main.js')
