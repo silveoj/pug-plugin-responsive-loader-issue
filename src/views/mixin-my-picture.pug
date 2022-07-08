@@ -1,0 +1,10 @@
+mixin my-picture
+  picture
+    source(
+      srcset=require(`/assets/img/image.png`)
+      type='image/png'
+    )
+    img(
+      src=require(`/assets/img/image.jpeg`)
+      alt=''
+    )

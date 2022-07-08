@@ -28,6 +28,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new PugPlugin({
+        pretty: true,
         modules: [
           PugPlugin.extractCss({
             filename: 'assets/css/[name].[contenthash:8].css',
@@ -86,7 +87,7 @@ module.exports = (env, argv) => {
           usePolling: true,
         },
       },
-      //open: true, // open in browser
+      open: true, // open in browser
     },
   };
 };
