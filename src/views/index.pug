@@ -1,37 +1,12 @@
-//- extends ../templates/wrapper.pug
 head
   link(rel="stylesheet", href=require('~Styles/styles.scss'))
+  //- TODO: error Can't resolve the file Images/image.png?size=200&format=webp
 
 body 
   header Index
-  img(src=require('~Images/image.png'))
-  img(src=require('../assets/img/image.png'))
+  //- img(src=require('~Images/image.png'))
+  //- img(src=require('../assets/img/image.png'))
 
-  -
-    const responsivePict = require('~Images/image.png?sizes[]=480,sizes[]=640,sizes[]=800,sizes[]=1024&format=webp');
-    const responsiveImage = {
-      srcSet: require('~Images/image.png?sizes[]=480,sizes[]=640,sizes[]=800,sizes[]=1024&format=jpg'),
-      src: require('~Images/image.png?format=jpg'),
-      width: require('~Images/image.png?prop=width&format=jpg'),
-      height: require('~Images/image.png?prop=height&format=jpg'),
-    };
-    //- const responsiveImage = {
-    //-   // use default image size
-    //-   src: require('~Images/image.png?size=1920'),
-    //-   srcSet: require('~Images/image.png?sizes[]=480,sizes[]=640,sizes[]=800,sizes[]=1024,sizes[]=1450,sizes[]=1920&format=png'),
-    //-   placeholder: require('~Images/image.png?prop=placeholder&placeholder=true&placeholderSize=100'),
-    //- }
-
-  picture
-    source(
-      srcSet=responsivePict.srcSet
-      type='image/webp'
-    )
-    img(
-      src=responsiveImage.src
-      srcSet=responsiveImage.srcSet
-      width=responsiveImage.width
-      height=responsiveImage.height
-    )
-
+  script(src=require('~Scripts/main.js'))
+  //- TODO: Not allowed to load local resource: file:///C:/myProj/src/js/main.js
   script(src=require('~Scripts/main.js'))
