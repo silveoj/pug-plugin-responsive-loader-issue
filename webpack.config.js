@@ -10,6 +10,7 @@ module.exports = (env, argv) => {
     mode: isProd,
     entry: {
       index: `./views/index.pug`,
+      index2: `./views/index2.pug`,
     },
     output: {
       filename: 'assets/js/[name].[contenthash:8].js',
